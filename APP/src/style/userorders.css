@@ -1,0 +1,26 @@
+.user-orders-container {
+  margin: 20px;
+}
+
+.orders-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.order-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: calc(50% - 20px);
+}
+
+.order-info {
+  font-size: 16px;
+}
+
+.no-orders {
+  font-size: 18px;
+  margin-top: 10px;
+}

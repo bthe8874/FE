@@ -1,0 +1,53 @@
+.confirmation-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.confirmation-page p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.order-details {
+  margin-bottom: 20px;
+}
+
+.order-details h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.order-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-details li {
+  margin-bottom: 10px;
+}
+
+.order-details p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.gotoproducts {
+  width: 250px;
+  padding: 12px 20px; /* Add padding for button */
+  font-size: 18px; /* Increase font size */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  background-color: #1d48d7; /* Set button color */
+  color: #ffffff; /* Set text color */
+  cursor: pointer;
+  align-self: center;
+}

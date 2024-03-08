@@ -1,0 +1,62 @@
+/* productCatalog.css */
+
+.products-list {
+  text-align: center;
+  padding: 20px;
+  /* background-color: antiquewhite; */
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 50px;
+  /* background-color: darkseagreen; */
+  padding: 30px;
+  border-radius: 5rem;
+  margin: 20px;
+}
+
+.product-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  background-color: azure;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  background-color: aliceblue;
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.product-card p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.btn-primary {
+  width: 60%;
+  padding: 12px 20px; /* Add padding for button */
+  font-size: 18px; /* Increase font size */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  background-color: #3030ee; /* Set button color */
+  color: #ffffff; /* Set text color */
+  cursor: pointer;
+}
