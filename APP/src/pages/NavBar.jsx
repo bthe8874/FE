@@ -7,20 +7,20 @@ function NavBar() {
   const handleLogout = () => {
     localStorage.removeItem("user");
 
-    window.location.href = "/login";
+    window.location.href = "/product/login";
   };
 
   return (
     <nav>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/product">Home</Link>
         </li>
         <li>
-          <Link to="/products">Products</Link>
+          <Link to="/product/productcatalog">Products</Link>
         </li>
         <li>
-          <Link to="/cart">Cart</Link>
+          <Link to="/product/cart">Cart</Link>
         </li>
         {user ? (
           <li>
@@ -29,10 +29,10 @@ function NavBar() {
         ) : (
           <>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/product/login">Login</Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>
+              <Link to="/product/register">Register</Link>
             </li>
           </>
         )}

@@ -8,8 +8,8 @@ function CustomerApp() {
   return (
     <Router>
       <Switch>
-        <Route path="/login" component={LoginPage} />
-        <Route path="/products" component={ProductCatalogPage} />
+        <Route path="/product/login" component={LoginPage} />
+        <Route path="/product/productcatalog" component={ProductCatalogPage} />
         {/* Add more routes for signup, product details, etc. */}
       </Switch>
     </Router>

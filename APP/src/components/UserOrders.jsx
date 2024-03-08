@@ -24,7 +24,7 @@ function UserOrdersPage() {
           window.alert("Error fetching the order!");
         });
     } else {
-      navigate("/");
+      navigate("/product");
     }
   }, [userID]);
 

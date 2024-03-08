@@ -24,7 +24,7 @@ function Confirmation({ address, products, subtotal }) {
           </ul>
         </div>
         <p>Subtotal: ${subtotal}</p>
-        <Link to="/products">
+        <Link to="/product/productcatalog">
           <button
             className="gotoproducts"
             onClick={() => dispatch(ClearCart())}

@@ -26,34 +26,34 @@ function AuthenticationApp() {
   return (
     <BrowserRouter>
       <nav>
-        <Link to="/" className="active">
+        <Link to="/product" className="active">
           Home
         </Link>
-        <Link to="/products">Products</Link>
+        <Link to="/product/productcatalog">Products</Link>
         {isLoggedIn ? (
           <>
-            <Link to="/cart">Cart</Link>
-            <Link to="/orders">Orders</Link>
+            <Link to="/product/cart">Cart</Link>
+            <Link to="/product/orders">Orders</Link>
             <button onClick={handleLogout}>Log Out</button>
           </>
         ) : (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/product/login">Login</Link>
+            <Link to="/product/register">Register</Link>
           </>
         )}
       </nav>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/product" element={<HomePage />} />
         <Route
-          path="/login"
+          path="/product/login"
           element={<LoginPage setIsLoggedIn={setIsLoggedIn} />}
         />
-        <Route path="/products" element={<ProductList />} />
-        <Route path="/register" element={<SignUpPage />} />
-        <Route path="/order" element={<OrderPage />} />
-        <Route path="/cart" element={<Checkout />} />
-        <Route path="/orders" element={<UserOrdersPage />} />
+        <Route path="/product/productcatalog" element={<ProductList />} />
+        <Route path="/product/register" element={<SignUpPage />} />
+        <Route path="/product/order" element={<OrderPage />} />
+        <Route path="/product/cart" element={<Checkout />} />
+        <Route path="/product/orders" element={<UserOrdersPage />} />
       </Routes>
     </BrowserRouter>
   );

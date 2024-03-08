@@ -28,7 +28,7 @@ function LoginPage({ setIsLoggedIn }) {
         localStorage.setItem("accesstoken", userData.sub);
 
         setIsLoggedIn(true);
-        navigate("/");
+        navigate("/product");
       }
     } catch (error) {
       console.error("Login failed:", error);
@@ -43,7 +43,7 @@ function LoginPage({ setIsLoggedIn }) {
           "User not registered. Do you want to register now?"
         );
         if (register) {
-          navigate("/register");
+          navigate("/product/register");
         }
       } else {
         alert("An error occurred. Please try again later.");

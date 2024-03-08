@@ -13,11 +13,11 @@ function Subtotal() {
       if (cart.cart.length === 0) {
         window.alert("Your cart is Empty!");
       } else {
-        navigate("/order");
+        navigate("/product/order");
       }
     } else {
       alert("Please log in to proceed.");
-      navigate("/login");
+      navigate("/product/login");
     }
   };
 

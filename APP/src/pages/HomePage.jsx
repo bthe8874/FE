@@ -9,7 +9,7 @@ function HomePage() {
     return (
       <div>
         <p>Please log in to view your account details.</p>
-        <Link to="/login">Login</Link>
+        <Link to="/product/login">Login</Link>
         <ProductList />
       </div>
     );

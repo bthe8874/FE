@@ -6,7 +6,7 @@ import ProductListPage from "./components/ProductList";
 function ProductCatalogApp() {
   return (
     <Router>
-      <Route path="/" component={ProductListPage} />
+      <Route path="/product" component={ProductListPage} />
     </Router>
   );
 }

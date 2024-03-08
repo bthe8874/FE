@@ -19,7 +19,7 @@ function SignUp() {
       console.log("Registration successful:", response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
       window.alert("Registration successfull!");
-      navigate("/");
+      navigate("//product");
     } catch (error) {
       console.error("Registration failed:", error);
     }

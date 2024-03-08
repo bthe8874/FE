@@ -23,7 +23,7 @@ function ProductList() {
     <div className="products-list">
       <h1>Product Catalog</h1>
       <div className="cart-icon">
-        <Link to="/cart">
+        <Link to="/product/cart">
           <span>Cart<strong>{Cart.cart.length}</strong></span>
           
         </Link>
