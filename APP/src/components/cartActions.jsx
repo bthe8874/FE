@@ -2,7 +2,7 @@ export function AddToCart(product, IMG) {
   return {
     type: "Add_Item_to_Cart",
     item: {
-      productID: product.productID,
+      productID: product.products_id,
       productName: product.productName,
       productPrice: product.productPrice,
       productIMG: IMG,

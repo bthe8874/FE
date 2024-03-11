@@ -1,7 +1,42 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Button, Card, CardContent, Container, TextField, Typography, Link } from "@mui/material";
+import { styled } from "@mui/system";
+import SignUpImage from "../../login.jpg"; // Adjust the path to match your image location
 import "../style/login.css";
+
+const SignUpButton = styled(Button)({
+  marginTop: "1rem",
+});
+
+const LoginFormContainer = styled(Container)({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+});
+
+const CardStyled = styled(Card)({
+  maxWidth: 400,
+  marginBottom: '1rem',
+});
+
+const CardContentStyled = styled(CardContent)({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+});
+
+const BackgroundImageContainer = styled('div')({
+  background: `url(${SignUpImage})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  width: '100%',
+  height: '100vh',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
 
 function LoginPage({ setIsLoggedIn }) {
   const [name, setName] = useState("");
@@ -15,10 +50,9 @@ function LoginPage({ setIsLoggedIn }) {
         password,
       });
       const responseData = response.data;
-      // const accessToken = localStorage.setItem("accessToken");
 
       if (responseData && responseData.code === "NotAuthorizedException") {
-        alert("User is not Regsitered.");
+        alert("User is not registered.");
         navigate("/register");
       } else {
         console.log("Login successful:", responseData);
@@ -52,54 +86,61 @@ function LoginPage({ setIsLoggedIn }) {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
-            <div className="card-body">
-              <h2 className="card-title text-center">Login</h2>
-              <form>
-                <div className="mb-3">
-                  <label htmlFor="email" className="form-label">
-                    UserName
-                  </label>
-                  <input
-                    type="name"
-                    className="form-control"
-                    id="name"
-                    placeholder="Enter Username"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="password" className="form-label">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    placeholder="Enter password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                <div className="d-grid gap-2">
-                  <button
-                    type="button"
-                    className="btn btn-success"
-                    onClick={handleLogin}
-                  >
-                    Login
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <BackgroundImageContainer>
+      <LoginFormContainer component="main" maxWidth="sm">
+        <CardStyled>
+          <CardContentStyled>
+            <Typography variant="h5" component="h2" gutterBottom>
+              Login
+            </Typography>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="Username"
+              name="name"
+              autoFocus
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button
+              type="button"
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={handleLogin}
+              sx={{ mt: 2 }}
+            >
+              Login
+            </Button>
+            <SignUpButton
+              type="button"
+              fullWidth
+              variant="outlined"
+              color="secondary"
+              onClick={() => navigate("/product/register")}
+              sx={{ mt: 1 }}
+            >
+              Sign Up
+            </SignUpButton>
+          </CardContentStyled>
+        </CardStyled>
+      </LoginFormContainer>
+    </BackgroundImageContainer>
   );
 }
 

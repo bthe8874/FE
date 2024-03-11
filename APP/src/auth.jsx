@@ -1,6 +1,6 @@
-// AuthenticationApp.js
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 import LoginPage from "./pages/LoginPage";
 import ProductList from "./components/ProductList";
 import SignUpPage from "./pages/Register";
@@ -8,7 +8,9 @@ import Checkout from "./components/CheckOut";
 import OrderPage from "./pages/OrderPage";
 import HomePage from "./pages/HomePage";
 import UserOrdersPage from "./components/UserOrders";
+import NavBar from "./pages/NavBar";
 import "./style/navbar.css";
+import "./style/transition.css"; 
 
 function AuthenticationApp() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,24 +27,7 @@ function AuthenticationApp() {
 
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/product" className="active">
-          Home
-        </Link>
-        <Link to="/product/productcatalog">Products</Link>
-        {isLoggedIn ? (
-          <>
-            <Link to="/product/cart">Cart</Link>
-            <Link to="/product/orders">Orders</Link>
-            <button onClick={handleLogout}>Log Out</button>
-          </>
-        ) : (
-          <>
-            <Link to="/product/login">Login</Link>
-            <Link to="/product/register">Register</Link>
-          </>
-        )}
-      </nav>
+      <NavBar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       <Routes>
         <Route path="/product" element={<HomePage />} />
         <Route

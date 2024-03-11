@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Button, Grid, Typography } from "@mui/material"; // Import Material UI components
 import "../style/checkout.css";
 import Subtotal from "./SubTotal";
-import {useDispatch} from 'react-redux';
-import {RemoveFromCart} from "./cartActions";
+import { useDispatch } from 'react-redux';
+import { RemoveFromCart } from "./cartActions";
 
 function CheckOut() {
     const cart = useSelector(state => state.cart);
@@ -11,23 +12,31 @@ function CheckOut() {
 
     return (
         <div className="checkout">
-            <h1>Your Cart</h1>
-            <div className="checkout_item">
-                {cart.cart.map(item => {
-                    return (
-                        <div className="checkout_product" key={item.productID}>
+            <Typography variant="h4" component="h1" gutterBottom>
+                Your Cart
+            </Typography>
+            <Grid container spacing={2} className="checkout_item">
+                {cart.cart.map(item => (
+                    <Grid item key={item.productID} xs={12}>
+                        <div className="checkout_product">
                             <img src={item.productIMG} alt={item.productName} />
                             <div className="product_info">
-                                <h4>{item.productName}</h4>
-                                <p>${item.productPrice}</p>
-                                <button onClick={() => dispatch(RemoveFromCart(item.productID))}>Remove from the Cart</button>
+                                <Typography variant="h6" gutterBottom>
+                                    {item.productName}
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    ${item.productPrice}
+                                </Typography>
+                                <Button variant="contained" color="secondary" onClick={() => dispatch(RemoveFromCart(item.productID))}>
+                                    Remove from Cart
+                                </Button>
                             </div>
                         </div>
-                    );
-                })}
-            </div>
+                    </Grid>
+                ))}
+            </Grid>
             <div className="subtotal">
-                <Subtotal/>
+                <Subtotal />
             </div>
         </div>
     );

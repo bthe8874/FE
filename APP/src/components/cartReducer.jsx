@@ -15,7 +15,7 @@ export function cartReducer(state = initiateState, action) {
       };
     case "Remove_Item_From_Cart":
       const index = state.cart.findIndex(
-        (cartItem) => cartItem.productID === action.productID
+        (cartItem) => cartItem.products_id === action.productID
       );
       let newCart = [...state.cart];
       if (index >= 0) {

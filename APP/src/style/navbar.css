@@ -1,25 +1,17 @@
-/* Navbar container */
-nav {
-  background-color: rgb(88, 76, 217); /* Dark background color */
-  padding: 20px 0; /* Add padding to top and bottom */
+/* navbar.css */
+
+.store-name {
+  flex-grow: 1;
 }
 
-/* Navbar links */
-nav a {
-  color: white; /* Text color */
-  text-decoration: none; /* Remove underline */
-  padding: 10px 20px; /* Add padding to left and right */
-  margin: 0 10px; /* Add margin to separate links */
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
+.nav-links {
+  display: flex;
 }
 
-/* Change background color on hover */
-nav a:hover {
-  background-color: rgb(4, 20, 37); /* Darker background color */
+.nav-link {
+  margin-right: 20px;
 }
 
-/* Active link */
-nav .active {
-  background-color: #4631b0; /* Green background color */
+.logout-btn {
+  margin-left: auto;
 }

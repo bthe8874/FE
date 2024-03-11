@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import "../style/userorders.css";
+import { Typography } from "@mui/material"; // Import Material UI components
 import { useNavigate } from "react-router-dom";
+import "../style/userorders.css";
 
 function UserOrdersPage() {
   const [orders, setOrders] = useState([]);
@@ -17,6 +18,7 @@ function UserOrdersPage() {
         .get(`http://localhost:3001/order/get/${userID}`)
         .then((response) => {
           console.log("Response data:", response.data);
+          console.log("userid",userID);
           setOrders(response.data);
         })
         .catch((error) => {
@@ -30,25 +32,29 @@ function UserOrdersPage() {
 
   return (
     <div className="user-orders-container">
-      <h2>Your Orders</h2>
+      <Typography variant="h4">Your Orders</Typography>
       <div className="orders-list">
         {orders && Array.isArray(orders) && orders.length > 0 ? (
           orders.map((order) => (
             <div key={order.order_id} className="order-item">
               <div className="order-info">
-                <strong>Order ID:</strong> {order.order_id}
-                <br />
-                <strong>Description:</strong> {order.description}
-                <br />
-                <strong>Address:</strong> {order.address}
-                <br />
-                <strong>Order Value:</strong> ${order.orderValue}
-                <br />
+                <Typography variant="body1">
+                  <strong>Order ID:</strong> {order.order_id}
+                </Typography>
+                <Typography variant="body1">
+                  <strong>Description:</strong> {order.description}
+                </Typography>
+                <Typography variant="body1">
+                  <strong>Address:</strong> {order.address}
+                </Typography>
+                <Typography variant="body1">
+                  <strong>Order Value:</strong> ${order.orderValue}
+                </Typography>
               </div>
             </div>
           ))
         ) : (
-          <div className="no-orders">No orders found.</div>
+          <Typography variant="body1" className="no-orders">No orders found.</Typography>
         )}
       </div>
     </div>

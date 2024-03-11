@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { getTotal } from "../components/cartReducer";
-import "../style/orderpage.css";
+import { Typography, TextField, Button, Grid, List, ListItem, ListItemText, ListItemAvatar, Avatar } from "@mui/material"; // Import Material UI components
 import ConfirmationPage from "../components/Confirmation";
 
 function OrderPage() {
   const [address, setAddress] = useState("");
   const cart = useSelector((state) => state.cart);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
-  const time = Date.now();
   const accesstoken = localStorage.getItem("accesstoken");
-  const userDataString = localStorage.getItem("user");
-  const userData = JSON.parse(userDataString);
+  const userData = JSON.parse(localStorage.getItem("user"));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,6 +59,7 @@ function OrderPage() {
       window.alert("Error placing order:", error);
     }
   };
+
   if (orderConfirmed) {
     return (
       <ConfirmationPage
@@ -73,33 +72,43 @@ function OrderPage() {
 
   return (
     <div className="orders">
-      <h1>Order</h1>
+      <Typography variant="h4" gutterBottom>
+      
+      </Typography>
       <div className="order-page">
-        <h2>Enter Your Address</h2>
+        <Typography variant="h5" gutterBottom>Enter Your Address</Typography>
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Enter your address"
+          <TextField
+            variant="outlined"
+            label="Address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            fullWidth
+            margin="normal"
+            required
           />
           <div className="order-details">
-            <h3>Order Details</h3>
-            <ul>
+            <Typography variant="h6" gutterBottom>Order Details</Typography>
+            <List>
               {cart.cart.map((item) => (
-                <li key={item.productID}>
-                  <img src={item.productIMG} alt={item.productName} />
-                  <div>
-                    <h4>{item.productName}</h4>
-                    <p>Price: ${item.productPrice}</p>
-                  </div>
-                </li>
+                <ListItem key={item.productID}>
+                  <ListItemAvatar>
+                    <Avatar src={item.productIMG} alt={item.productName} />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary={item.productName}
+                    secondary={`Price: $${item.productPrice}`}
+                  />
+                </ListItem>
               ))}
-            </ul>
+            </List>
           </div>
-
-          <p className="subtotal">Subtotal: ${getTotal(cart.cart)}</p>
-          <button type="submit">Confirm Order</button>
+          <Typography variant="subtitle1" className="subtotal">
+            Subtotal: ${getTotal(cart.cart)}
+          </Typography>
+          <Button variant="contained" color="primary" type="submit">
+            Confirm Order
+          </Button>
         </form>
       </div>
     </div>
