@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, Card, CardContent, Container, TextField, Typography, Link } from "@mui/material";
 import { styled } from "@mui/system";
-import SignUpImage from "../../login.jpg"; // Adjust the path to match your image location
+import SignUpImage from "../../login.jpg"; 
 import "../style/login.css";
 
 const SignUpButton = styled(Button)({
@@ -41,7 +41,9 @@ const BackgroundImageContainer = styled('div')({
 function LoginPage({ setIsLoggedIn }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [loginDisabled, setLoginDisabled] = useState(true); 
   const navigate = useNavigate();
+
 
   const handleLogin = async () => {
     try {
@@ -85,6 +87,20 @@ function LoginPage({ setIsLoggedIn }) {
     }
   };
 
+  
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+    
+    setLoginDisabled(!e.target.value || !password);
+  };
+
+  
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+   
+    setLoginDisabled(!e.target.value || !name);
+  };
+
   return (
     <BackgroundImageContainer>
       <LoginFormContainer component="main" maxWidth="sm">
@@ -103,7 +119,7 @@ function LoginPage({ setIsLoggedIn }) {
               name="name"
               autoFocus
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleNameChange} 
             />
             <TextField
               variant="outlined"
@@ -115,7 +131,7 @@ function LoginPage({ setIsLoggedIn }) {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange} 
             />
             <Button
               type="button"
@@ -124,6 +140,7 @@ function LoginPage({ setIsLoggedIn }) {
               color="primary"
               onClick={handleLogin}
               sx={{ mt: 2 }}
+              disabled={loginDisabled} 
             >
               Login
             </Button>

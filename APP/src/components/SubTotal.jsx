@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { Typography, Button } from "@mui/material"; // Import Material UI components
+import { Typography, Button } from "@mui/material"; 
 import { getTotal } from "./cartReducer";
 
 function Subtotal() {

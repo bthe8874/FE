@@ -1,87 +1,28 @@
-.orders {
-  align-content: center;
-}
-
-.orders h1 {
-  align-content: center;
-}
-
-.order-page {
-  max-width: 600px;
-  margin: 0 auto;
+.order-container {
+  margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
 }
 
-.order-page h2 {
-  font-size: 20px;
+.address-container,
+.order-details-container {
+  background-color: #f9f9f9;
+  padding: 20px;
   margin-bottom: 20px;
-}
-
-.order-page form {
-  display: flex;
-  flex-direction: column;
-}
-
-.order-page input[type="text"] {
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.order-details {
-  margin-bottom: 20px;
-}
-
-.order-details h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.order-details ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.order-details li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.order-details img {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-}
-
-.order-details h4 {
-  font-size: 18px;
-}
-
-.order-details p {
-  font-size: 16px;
-  margin: 0;
 }
 
 .subtotal {
-  font-size: 18px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
-button[type="submit"] {
-  padding: 10px 20px;
-  background-color: #4937e8;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3;
+@media (max-width: 600px) {
+  .order-container {
+    padding: 10px;
+  }
+  
+  .address-container,
+  .order-details-container {
+    padding: 10px;
+  }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Button, Grid, Typography } from "@mui/material"; // Import Material UI components
+import { Button, Grid, Typography } from "@mui/material"; 
 import "../style/checkout.css";
 import Subtotal from "./SubTotal";
 import { useDispatch } from 'react-redux';

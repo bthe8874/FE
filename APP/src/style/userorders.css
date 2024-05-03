@@ -1,26 +1,39 @@
+/* userorders.css */
+
 .user-orders-container {
-  margin: 20px;
+  padding: 20px;
 }
 
 .orders-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .order-item {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20px;
-  width: calc(50% - 20px);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  background-color: #17273b;
+  color: #fff;
+  background: linear-gradient(to bottom, #19202b 0%, #0c2a45 100%);
+}
+
+.order-item:hover {
+  transform: translateY(-5px);
 }
 
 .order-info {
-  font-size: 16px;
+  color: #ddd;
+}
+
+.order-info strong {
+  color: #bbb;
 }
 
 .no-orders {
-  font-size: 18px;
-  margin-top: 10px;
+  margin-top: 20px;
+  text-align: center;
+  color: #ddd;
 }

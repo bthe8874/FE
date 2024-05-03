@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ClearCart } from "../components/cartActions";
-import { Typography, Button, List, ListItem, ListItemText } from "@mui/material"; // Import Material UI components
+import { Typography, Button, List, ListItem, ListItemText } from "@mui/material"; 
 import "../style/orderconfirmation.css";
 
 function Confirmation({ address, products, subtotal }) {
@@ -32,7 +32,7 @@ function Confirmation({ address, products, subtotal }) {
           onClick={() => dispatch(ClearCart())}
           className="gotoproducts"
         >
-          Home Page
+          Home
         </Button>
       </Link>
     </div>

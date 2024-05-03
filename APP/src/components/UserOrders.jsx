@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Typography } from "@mui/material"; // Import Material UI components
+import { Typography, Paper } from "@mui/material"
 import { useNavigate } from "react-router-dom";
 import "../style/userorders.css";
 
@@ -8,12 +8,12 @@ function UserOrdersPage() {
   const [orders, setOrders] = useState([]);
   const navigate = useNavigate();
   const userDataString = localStorage.getItem("user");
-  const userData = userDataString ? JSON.parse(userDataString) : null; // Check if userDataString is null
-  const userID = userData ? userData.sub : null; // Check if userData is null
+  const userData = userDataString ? JSON.parse(userDataString) : null; 
+  const userID = userData ? userData.sub : null; 
 
   useEffect(() => {
     if (userID) {
-      // Check if userID is not null
+      
       axios
         .get(`http://localhost:3001/order/get/${userID}`)
         .then((response) => {
@@ -26,17 +26,28 @@ function UserOrdersPage() {
           window.alert("Error fetching the order!");
         });
     } else {
-      navigate("/product");
+      window.alert("User not confirmed. Please confirm your account.");
+    navigate("/product");
     }
   }, [userID]);
 
+  const getRandomColor = () => {
+    const colors = ["#F48FB1", "#B39DDB", "#4FC3F7", "#81C784", "#FFD54F"];
+    return colors[Math.floor(Math.random() * colors.length)];
+  };
+
   return (
     <div className="user-orders-container">
-      <Typography variant="h4">Your Orders</Typography>
+      <Typography variant="h4" gutterBottom>Your Orders</Typography>
       <div className="orders-list">
         {orders && Array.isArray(orders) && orders.length > 0 ? (
           orders.map((order) => (
-            <div key={order.order_id} className="order-item">
+            <Paper
+              key={order.order_id}
+              elevation={3}
+              className="order-item"
+              style={{ backgroundColor: getRandomColor() }}
+            >
               <div className="order-info">
                 <Typography variant="body1">
                   <strong>Order ID:</strong> {order.order_id}
@@ -51,7 +62,7 @@ function UserOrdersPage() {
                   <strong>Order Value:</strong> ${order.orderValue}
                 </Typography>
               </div>
-            </div>
+            </Paper>
           ))
         ) : (
           <Typography variant="body1" className="no-orders">No orders found.</Typography>

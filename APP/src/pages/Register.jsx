@@ -11,7 +11,7 @@ import {
   Link
 } from "@mui/material";
 import { styled } from "@mui/system";
-import SignUpImage from "../../login.jpg"; // Adjust the path to match your image location
+import SignUpImage from "../../login.jpg"; 
 import "../style/login.css";
 
 const SignUpButton = styled(Button)({
@@ -50,6 +50,7 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [registerDisabled, setRegisterDisabled] = useState(true); 
   const navigate = useNavigate();
 
   const handleRegister = async () => {
@@ -66,6 +67,27 @@ function SignUp() {
     } catch (error) {
       console.error("Registration failed:", error);
     }
+  };
+
+ 
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+    
+    setRegisterDisabled(!e.target.value || !email || !password);
+  };
+
+  
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    
+    setRegisterDisabled(!e.target.value || !name || !password);
+  };
+
+  
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    
+    setRegisterDisabled(!e.target.value || !name || !email);
   };
 
   return (
@@ -86,7 +108,7 @@ function SignUp() {
               name="name"
               autoFocus
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleNameChange} 
             />
             <TextField
               variant="outlined"
@@ -97,7 +119,7 @@ function SignUp() {
               label="Email"
               name="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleEmailChange} 
             />
             <TextField
               variant="outlined"
@@ -109,7 +131,7 @@ function SignUp() {
               name="password"
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange} 
             />
             <Button
               type="button"
@@ -119,6 +141,7 @@ function SignUp() {
               className="submit"
               onClick={handleRegister}
               sx={{ mt: 2 }}
+              disabled={registerDisabled} 
             >
               Register
             </Button>

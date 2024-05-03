@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import IMG from "../../img.jpg";
 import { FaShoppingCart } from "react-icons/fa";
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Typography, Button, Paper } from "@mui/material";
 import { useDispatch, useSelector } from 'react-redux';
 import { AddToCart } from "./cartActions";
+import "../style/productCatalog.css";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -31,22 +32,27 @@ function ProductList() {
       </Typography>
       <div className="cart-container">
         <div className="cart-icon">
-          <Link to="/product/cart">
-            <FaShoppingCart style={{ fontSize: "2rem" }} /> {/* Adjust the size here */}
-            <span><strong>{Cart.cart.length}</strong></span>
+          <Link to="/product/cart" style={{ textDecoration: 'none', color: '#3f51b5' }}>
+            <FaShoppingCart style={{ fontSize: "2rem" }} />
+            <span style={{ fontWeight: 'bold' }}>{Cart.cart.length}</span>
           </Link>
         </div>
       </div>
       <Grid container spacing={2}>
         {products.map((product) => (
           <Grid item key={product.products_id} xs={12} sm={6} md={4} lg={3}>
-            <div className="product-card">
+            <Paper
+              elevation={3}
+              className="product-card"
+              onMouseEnter={(e) => e.currentTarget.classList.add("hover")}
+              onMouseLeave={(e) => e.currentTarget.classList.remove("hover")}
+            >
               <img
                 src={IMG}
                 alt={product.productName}
                 className="product-image"
               />
-              <div className="productdetails">
+              <div className="product-details">
                 <Typography variant="h6" gutterBottom>
                   {product.productName}
                 </Typography>
@@ -59,15 +65,16 @@ function ProductList() {
                 <Typography variant="body2">
                   Stock Available: {product.stockAvailable}
                 </Typography>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => dispatch(AddToCart(product, IMG))}
+                  className="add-to-cart-btn"
+                >
+                  Add to Cart
+                </Button>
               </div>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => dispatch(AddToCart(product, IMG))}
-              >
-                Add to Cart
-              </Button>
-            </div>
+            </Paper>
           </Grid>
         ))}
       </Grid>

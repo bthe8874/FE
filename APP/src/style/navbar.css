@@ -1,17 +1,31 @@
 /* navbar.css */
 
+.navbar {
+  height: 100px; /* Increase the height */
+  background-color: #263238; /* Darker background color */
+}
+
 .store-name {
-  flex-grow: 1;
+  font-size: 24px; /* Increase the font size */
+  color: #fff; /* White text color */
+  margin-right: 20px; /* Add some right margin */
 }
 
 .nav-links {
-  display: flex;
+  margin-left: auto; /* Push the links to the right */
 }
 
 .nav-link {
-  margin-right: 20px;
+  font-size: 18px; /* Increase the font size */
+  color: #fff; /* White text color */
+  margin-right: 20px; /* Add more right margin between the links */
 }
 
 .logout-btn {
-  margin-left: auto;
+  font-size: 18px; /* Increase the font size */
+  color: #fff; /* White text color */
+}
+
+.logout-btn:hover {
+  background-color: #37474f; /* Darker hover color */
 }

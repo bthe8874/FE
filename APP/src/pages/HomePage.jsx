@@ -17,8 +17,8 @@ function HomePage() {
           </div>
         ) : (
           <div>
-            <p className="welcome-message">Please log in to view your account details.</p>
-            <Link to="/product/login" className="login-link">Login</Link>
+            <p className="welcome-message"></p>
+            
           </div>
         )}
       </div>

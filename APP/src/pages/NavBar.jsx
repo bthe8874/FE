@@ -1,3 +1,5 @@
+// NavBar.jsx
+
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
@@ -12,11 +14,13 @@ function NavBar() {
     window.location.href = "/product/login";
   };
 
-  // Check if the current route is "/product/login" or "/product/register"
-  const isLoginOrRegister = location.pathname === "/product/login" || location.pathname === "/product/register";
+  
+  const isLoginOrRegister =
+    location.pathname === "/product/login" ||
+    location.pathname === "/product/register";
 
   if (isLoginOrRegister) {
-    return null; // Don't render the navbar for login or register pages
+    return null; 
   }
 
   return (
@@ -35,9 +39,11 @@ function NavBar() {
           <Button color="inherit" component={Link} to="/product/cart" className="nav-link">
             Cart
           </Button>
-          <Button color="inherit" component={Link} to="/product/orders" className="nav-link">
-            User Orders
-          </Button>
+          {user && (
+            <Button color="inherit" component={Link} to="/product/orders" className="nav-link">
+              User Orders
+            </Button>
+          )}
         </div>
         {user ? (
           <Button color="inherit" className="logout-btn" onClick={handleLogout}>
@@ -45,7 +51,7 @@ function NavBar() {
           </Button>
         ) : (
           <Button color="inherit" component={Link} to="/product/login" className="nav-link">
-            Login
+            SignUp
           </Button>
         )}
       </Toolbar>
